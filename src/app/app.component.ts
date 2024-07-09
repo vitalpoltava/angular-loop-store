@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NativeLoopComponent } from "./native-loop-component/native-loop/native-loop.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [NativeLoopComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

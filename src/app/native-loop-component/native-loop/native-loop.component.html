@@ -1,0 +1,66 @@
+<style>
+    th {
+        text-align: left;
+        min-width: 5rem
+    }
+
+    .loader {
+        width: 1.3rem;
+        height: 1.3rem;
+        border: 5px solid #f9f8f8;
+        border-bottom-color: #949795;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    } 
+
+    .button {
+        height: 2rem;
+        width: 10rem;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+<p>
+    @if(!store.items) {
+        <button class="button" (click)="loadItems()">
+            @if(store.loadingItems) {
+                <span class="loader"></span>
+            } @else {
+                Load Items
+            }
+        </button>
+    }
+    @if(store.items && store.items.length) {
+        <h3>Items List</h3>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of store.items">
+                  <td>{{item.id}}</td>
+                  <td>{{item.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    @if(store.loadingError) {
+        <div class="error">Loading Error!</div>
+    }
+</p>
